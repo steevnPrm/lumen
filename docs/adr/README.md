@@ -43,4 +43,5 @@ Les fichiers sont numérotés séquentiellement (`0001-...`, `0002-...`) et ne s
 | [0001](./0001-record-architecture-decisions.md) | Consigner les décisions d'architecture via des ADR | Acceptée |
 | [0002](./0002-backend-spring-boot-postgresql.md) | Backend en Spring Boot avec PostgreSQL | Acceptée |
 | [0003](./0003-frontend-nextjs-auth0.md) | Frontend en Next.js avec authentification Auth0 | Acceptée |
-| [0004](./0004-local-dev-database-h2.md) | Base de données H2 en mémoire pour le développement local | Acceptée |
+| [0004](./0004-local-dev-database-h2.md) | Base de données H2 en mémoire pour le développement local | Remplacée par ADR-0005 |
+| [0005](./0005-postgresql-docker-compose-dev.md) | PostgreSQL via Docker Compose pour le développement local | Acceptée |

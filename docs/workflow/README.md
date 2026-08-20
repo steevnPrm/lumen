@@ -5,7 +5,7 @@
 - Java 21 (backend)
 - Node.js + npm (frontend)
 - [Auth0 CLI](https://github.com/auth0/auth0-cli) (`auth0`), pour créer/gérer l'application Auth0 utilisée par le client
-- PostgreSQL 16, uniquement si vous testez la configuration cible (voir [ADR-0004](../adr/0004-local-dev-database-h2.md) — non requis pour le développement courant, qui utilise H2 en mémoire)
+- Docker + Docker Compose, pour la base PostgreSQL locale (voir [ADR-0005](../adr/0005-postgresql-docker-compose-dev.md))
 
 ## Structure du repo
 
@@ -18,12 +18,16 @@
 ## Backend (`api/`)
 
 ```bash
+# Démarrer PostgreSQL (une seule fois, depuis la racine du repo)
+docker compose up -d
+
 cd api
 ./mvnw spring-boot:run
 ```
 
 - Démarre sur `http://localhost:8080`.
-- Utilise une base H2 en mémoire par défaut ([ADR-0004](../adr/0004-local-dev-database-h2.md)) — aucune installation de base de données requise. Console H2 disponible sur `http://localhost:8080/h2-console` (JDBC URL `jdbc:h2:mem:lumen`, user `sa`, mot de passe vide).
+- Se connecte à PostgreSQL via Docker Compose ([ADR-0005](../adr/0005-postgresql-docker-compose-dev.md)) — base `lumen`, utilisateur `lumen`, port `5432`.
+- Les tests (`./mvnw test`) utilisent H2 en mémoire ([`src/test/resources/application.properties`](../../api/src/test/resources/application.properties)) et n'ont pas besoin de Docker.
 - Health check : `http://localhost:8080/actuator/health`.
 
 ## Frontend (`auth-client/`)

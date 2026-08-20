@@ -1,7 +1,7 @@
 # 0004. Base de données H2 en mémoire pour le développement local
 
 ## Statut
-Acceptée — mesure temporaire, à remplacer par PostgreSQL (voir [ADR-0002](./0002-backend-spring-boot-postgresql.md)) une fois un environnement Postgres provisionné par développeur/environnement.
+Remplacée par [ADR-0005](./0005-postgresql-docker-compose-dev.md).
 
 ## Contexte
 Le backend dépend de `spring-boot-starter-data-jpa` et du driver PostgreSQL, mais sans URL de connexion configurée, `mvn spring-boot:run` échoue au démarrage (`Failed to determine a suitable driver class`). Aucune instance PostgreSQL n'est encore provisionnée pour le développement local (pas de docker-compose, pas de cluster partagé), et le modèle de données n'a pas encore d'entités JPA définies.
