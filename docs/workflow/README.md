@@ -51,6 +51,19 @@ AUTH0_DOMAIN=
 AUTH0_CLIENT_ID=
 AUTH0_CLIENT_SECRET=
 AUTH0_SECRET=
+
+# Optionnel — nom de la connexion base de données utilisée pour l'inscription
+# (voir ADR-0006). Par défaut "Username-Password-Authentication".
+AUTH0_CONNECTION=
+
+# Optionnel — identifiant de l'API Auth0 (Resource Server) déclarée pour le
+# backend Spring. Sans cette valeur, l'access token émis par Auth0 n'est pas
+# un JWT et le backend ne peut pas le valider (voir ADR-0006, PRO-115).
+AUTH0_AUDIENCE=
+
+# Optionnel — URL du backend Spring, utilisée côté serveur Next.js pour
+# synchroniser le profil juste après la connexion. Par défaut http://localhost:8080.
+API_BASE_URL=
 ```
 
 `AUTH0_SECRET` peut être généré avec `openssl rand -hex 32`.

@@ -1,4 +1,5 @@
 import { auth0 } from "@/lib/auth0";
+import { ProfileSync } from "@/app/profile-sync";
 
 export default async function Home() {
   // Check if user is authenticated
@@ -16,9 +17,8 @@ export default async function Home() {
         </p>
 
         <div className="mt-4 flex flex-wrap items-center justify-center gap-4">
-          {/* Redirects to Auth0 to sign up */}
           <a
-            href="/auth/login?screen_hint=signup"
+            href="/signup"
             className="inline-flex h-11 items-center justify-center rounded-full bg-accent px-6 text-[17px] font-semibold text-white transition-colors duration-200 ease-out hover:bg-accent-hover active:bg-accent-pressed"
           >
             Créer un compte
@@ -37,6 +37,7 @@ export default async function Home() {
 
   return (
     <main className="mx-auto flex min-h-screen w-full max-w-300 flex-col items-center justify-center gap-6 px-6 py-16">
+      <ProfileSync />
       <div className="w-full max-w-md rounded-2xl border border-separator bg-background-secondary p-6 shadow-[0_1px_3px_rgba(0,0,0,0.08)]">
         <p className="text-[13px] leading-[1.4] tracking-wide text-foreground-secondary uppercase">
           Connecté en tant que
