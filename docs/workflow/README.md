@@ -5,7 +5,7 @@
 - Java 21 (backend)
 - Node.js + npm (frontend)
 - [Auth0 CLI](https://github.com/auth0/auth0-cli) (`auth0`), pour créer/gérer l'application Auth0 utilisée par le client
-- Docker + Docker Compose, pour la base PostgreSQL locale (voir [ADR-0005](../adr/0005-postgresql-docker-compose-dev.md))
+- Docker + Docker Compose, pour PostgreSQL et MinIO en local (voir [ADR-0005](../adr/0005-postgresql-docker-compose-dev.md) et [ADR-0007](../adr/0007-minio-stockage-visuels-utilisateurs.md))
 
 ## Structure du repo
 
@@ -18,7 +18,7 @@
 ## Backend (`api/`)
 
 ```bash
-# Démarrer PostgreSQL (une seule fois, depuis la racine du repo)
+# Démarrer PostgreSQL et MinIO (une seule fois, depuis la racine du repo)
 docker compose up -d
 
 cd api
@@ -27,6 +27,7 @@ cd api
 
 - Démarre sur `http://localhost:8080`.
 - Se connecte à PostgreSQL via Docker Compose ([ADR-0005](../adr/0005-postgresql-docker-compose-dev.md)) — base `lumen`, utilisateur `lumen`, port `5432`.
+- Se connecte à MinIO via Docker Compose ([ADR-0007](../adr/0007-minio-stockage-visuels-utilisateurs.md)) — API sur le port `9000`, console web sur `http://localhost:9001` (identifiants `lumen` / `lumen12345` en local), bucket `lumen-user-visuals` créé automatiquement au démarrage. Variables d'environnement disponibles : `MINIO_ENDPOINT`, `MINIO_ACCESS_KEY`, `MINIO_SECRET_KEY`, `MINIO_BUCKET`, `MINIO_PRESIGNED_URL_EXPIRY_SECONDS`.
 - Les tests (`./mvnw test`) utilisent H2 en mémoire ([`src/test/resources/application.properties`](../../api/src/test/resources/application.properties)) et n'ont pas besoin de Docker.
 - Health check : `http://localhost:8080/actuator/health`.
 
