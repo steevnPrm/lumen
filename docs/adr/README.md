@@ -46,3 +46,4 @@ Les fichiers sont numérotés séquentiellement (`0001-...`, `0002-...`) et ne s
 | [0004](./0004-local-dev-database-h2.md) | Base de données H2 en mémoire pour le développement local | Remplacée par ADR-0005 |
 | [0005](./0005-postgresql-docker-compose-dev.md) | PostgreSQL via Docker Compose pour le développement local | Acceptée |
 | [0006](./0006-custom-signup-form.md) | Formulaire d'inscription personnalisé, en dehors de la page Auth0 hébergée | Acceptée |
+| [0007](./0007-minio-stockage-visuels-utilisateurs.md) | MinIO pour le stockage des éléments visuels utilisateurs | Acceptée |
